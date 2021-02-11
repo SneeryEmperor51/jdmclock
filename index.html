@@ -2,59 +2,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+	<style>
+	img {
+	 display: block;
+	 margin-left: auto;
+	 margin-right: auto;
+	}
+	</style>
 	<meta content="IE=EmulateIE7" http-equiv="X-UA-Compatible">
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 	<meta content="text/css" http-equiv="Content-Style-Type">
 	<meta content="text/javascript" http-equiv="Content-Script-Type">
-	<title>Daily Photos</title>
+	<title>JDMClock</title>
 	<script type="text/javascript">
 
-	var dailyPhotos;
-	var today, img;
+	   var dailyPhotos;
+	   var today, img;
 
-	dailyPhotos = function() {
+	   dailyPhotos = function() {
 
-	  today = new Date();
-	  weekday = today.getDay();
-	  showImages = [ ];
-	  myPhotos = [ "https://user-images.githubusercontent.com/59810782/107594631-6b2eaf00-6be0-11eb-8ab3-9c1990cde799.jpg", "https://user-images.githubusercontent.com/59810782/107594621-636f0a80-6be0-11eb-947f-37a74019d1d9.jpg", "https://user-images.githubusercontent.com/59810782/107594608-56521b80-6be0-11eb-8c2c-9a9dd036765d.jpg", "https://user-images.githubusercontent.com/59810782/107594704-91544f00-6be0-11eb-8b45-7615df8aa10f.jpg", "https://user-images.githubusercontent.com/59810782/107594567-37538980-6be0-11eb-8554-5945bba3fff0.jpg", "https://user-images.githubusercontent.com/59810782/107594693-8a2d4100-6be0-11eb-99c2-b40aae4a2052.jpg", "https://user-images.githubusercontent.com/59810782/107594686-813c6f80-6be0-11eb-9996-cad84f9ffc7a.jpg" ]; 
+	     today = new Date();
+	     weekday = today.getDay();
+	     showImages = [ ];
+	     myPhotos = [ "https://user-images.githubusercontent.com/59810782/107594631-6b2eaf00-6be0-11eb-8ab3-9c1990cde799.jpg", "https://user-images.githubusercontent.com/59810782/107594621-636f0a80-6be0-11eb-947f-37a74019d1d9.jpg", "https://user-images.githubusercontent.com/59810782/107594608-56521b80-6be0-11eb-8c2c-9a9dd036765d.jpg", "https://user-images.githubusercontent.com/59810782/107594704-91544f00-6be0-11eb-8b45-7615df8aa10f.jpg", "https://user-images.githubusercontent.com/59810782/107594567-37538980-6be0-11eb-8554-5945bba3fff0.jpg", "https://user-images.githubusercontent.com/59810782/107594693-8a2d4100-6be0-11eb-99c2-b40aae4a2052.jpg", "https://user-images.githubusercontent.com/59810782/107594686-813c6f80-6be0-11eb-9996-cad84f9ffc7a.jpg" ]; 
 
-	   if ( document.images ) {
-	      for ( var x = 0; x < myPhotos.length; x++ ) { 
-	      showImages[ x ] = new Image();
-	      showImages[ x ].src = myPhotos[ x ];          
-	    } img = (( document.getElementById ) ? document.getElementById("yourImageId") : document.images.yourImageId );
-	       img.src = showImages[ weekday ].src;
-	       img.alt = myPhotos[ weekday ];         
-	  } return false; 
-	};
-	  window.onload = dailyPhotos;
-	// ]]>
+	      if ( document.images ) {
+	         for ( var x = 0; x < myPhotos.length; x++ ) { 
+	         showImages[ x ] = new Image();
+	         showImages[ x ].src = myPhotos[ x ];          
+	       } img = (( document.getElementById ) ? document.getElementById("yourImageId") : document.images.yourImageId );
+	          img.src = showImages[ weekday ].src;
+	          img.alt = myPhotos[ weekday ];         
+	     } return false; 
+	   };
+	     window.onload = dailyPhotos;
+	   // ]]>
 
 	</script>
 </head>
 <body>
 	<div id="clockbox" style="text-align:center;font:50pt Oswald;color:#13FA00 ;position: absolute;top: 400px; left: 0; width: 100%;"></div>
 	<script type="text/javascript">
-	var tday=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-	var tmonth=["January","February","March","April","May","June","July","August","September","October","November","December"];
+	   var tday=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+	   var tmonth=["January","February","March","April","May","June","July","August","September","October","November","December"];
 
-	function GetClock(){
-	var d=new Date();
-	var nday=d.getDay(),nmonth=d.getMonth(),ndate=d.getDate(),nyear=d.getFullYear();
-	var nhour=d.getHours(),nmin=d.getMinutes(),nsec=d.getSeconds();
-	if(nmin<=9) nmin="0"+nmin;
-	if(nsec<=9) nsec="0"+nsec;
+	   function GetClock(){
+	   var d=new Date();
+	   var nday=d.getDay(),nmonth=d.getMonth(),ndate=d.getDate(),nyear=d.getFullYear();
+	   var nhour=d.getHours(),nmin=d.getMinutes(),nsec=d.getSeconds();
+	   if(nmin<=9) nmin="0"+nmin;
+	   if(nsec<=9) nsec="0"+nsec;
 
-	var clocktext=""+tday[nday]+", "+tmonth[nmonth]+" "+ndate+", "+nyear+" "+nhour+":"+nmin+":"+nsec+"";
-	document.getElementById('clockbox').innerHTML=clocktext;
-	}
+	   var clocktext=""+tday[nday]+", "+tmonth[nmonth]+" "+ndate+", "+nyear+" "+nhour+":"+nmin+":"+nsec+"";
+	   document.getElementById('clockbox').innerHTML=clocktext;
+	   }
 
-	GetClock();
-	setInterval(GetClock,1000);
-	</script>
-	<center>
-		<img alt="DEMO" height="1100" id="yourImageId" src="tuesdayPhoto.jpg" width="2000" class="center">
-	</center>
+	   GetClock();
+	   setInterval(GetClock,1000);
+	</script> <img id="yourImageId" src="tuesdayPhoto.jpg" style="width:100%;">
 </body>
 </html>
